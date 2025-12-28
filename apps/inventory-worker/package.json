@@ -1,0 +1,21 @@
+{
+    "name": "inventory-worker",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "ts-node-dev src/index.ts",
+        "build": "tsc",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "@flux-gate/shared": "*",
+        "kafkajs": "^2.2.4",
+        "pg": "^8.11.0",
+        "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "ts-node-dev": "^2.0.0",
+        "@types/node": "^18.0.0",
+        "@types/pg": "^8.10.0"
+    }
+}

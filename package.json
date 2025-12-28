@@ -1,0 +1,24 @@
+{
+  "name": "flux-gate-distributed-high-concurrency-flash-sale-engine",
+  "version": "1.0.0",
+  "description": "## Project Overview A backend system designed to handle 100,000 requests per second for a flash sale (e.g., \"100 iPhones for sale\") ensuring zero overselling and fairness, deployed on a Kubernetes cluster.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KumarDhananjaya/Flux-Gate-Distributed-High-Concurrency-Flash-Sale-Engine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KumarDhananjaya/Flux-Gate-Distributed-High-Concurrency-Flash-Sale-Engine/issues"
+  },
+  "homepage": "https://github.com/KumarDhananjaya/Flux-Gate-Distributed-High-Concurrency-Flash-Sale-Engine#readme",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

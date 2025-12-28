@@ -1,0 +1,79 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build output
+dist/
+build/
+out/
+coverage/
+
+# Caches
+.cache/
+.nyc_output/
+.eslintcache
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+.dockerignore
+
+# Database
+*.sqlite
+*.db
+data/
+
+# Test
+reports/
+test-results/
+
+# Runtime
+pids
+*.pid
+
+# Temporary files
+tmp/
+temp/
+
+# Certificates / secrets
+*.pem
+*.key
+*.crt
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Java
+target/
+*.class
+
+# Go
+bin/
+*.exe

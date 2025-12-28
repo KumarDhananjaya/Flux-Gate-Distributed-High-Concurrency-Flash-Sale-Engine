@@ -1,0 +1,19 @@
+{
+    "name": "waiting-room",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "ts-node-dev src/index.ts",
+        "build": "tsc",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "fastify": "^4.21.0",
+        "@fastify/static": "^6.10.0",
+        "@flux-gate/shared": "*"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "ts-node-dev": "^2.0.0",
+        "@types/node": "^18.0.0"
+    }
+}

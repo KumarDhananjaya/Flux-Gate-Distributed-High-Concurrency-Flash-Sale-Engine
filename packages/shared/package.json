@@ -1,0 +1,17 @@
+{
+    "name": "@flux-gate/shared",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "ioredis": "^5.3.0",
+        "kafkajs": "^2.2.4"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "@types/node": "^18.0.0"
+    }
+}
