@@ -1,5 +1,7 @@
 # 🧠 Flux-Gate: Under the Hood
 
+![Flux-Gate Architecture](./assets/flux_gate_architecture.png)
+
 This document provides a deep dive into the technical implementation, data flow, and architectural decisions behind the **Flux-Gate Distributed Flash Sale Engine**.
 
 ---
