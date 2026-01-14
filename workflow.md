@@ -1,9 +1,11 @@
-Workflows & User Experience Diagrams
+# Workflows & User Experience Diagrams
+
 This document visually details the operational flows for Customers and Distributors within the IRIS platform.
 
-1. High-Level Interaction Flow
+## 1. High-Level Interaction Flow
 This diagram illustrates how Customers and Distributors interact with the ecosystem.
 
+```mermaid
 graph TD
     subgraph "Customer Ecosystem"
         C[Customer] -->|Controls via BLE| D[IRIS Device]
@@ -26,10 +28,14 @@ graph TD
     %% Key Interactions
     C -.->|1. Raise Refill Ticket| DIST
     DIST -.->|2. Fulfill Service| C
-2. User Experience (UX) Journey Maps
-A. Customer Journey
+```
+
+## 2. User Experience (UX) Journey Maps
+
+### A. Customer Journey
 The end-to-end experience for a home or business user managing their own devices.
 
+```mermaid
 journey
     title Customer App Usage Flow
     section Onboarding
@@ -47,9 +53,12 @@ journey
       Receive Low Oil Alert: 3: Device, App
       Request Refill: 5: Customer
       Track Ticket Status: 4: Customer
-B. Distributor Journey
+```
+
+### B. Distributor Journey
 The workflow for a distributor managing multiple clients and devices.
 
+```mermaid
 journey
     title Distributor Portal Flow
     section Start
@@ -63,47 +72,54 @@ journey
       Receive Refill Ticket: 2: Distributor
       Assign Technician: 4: Distributor
       Mark Resolved: 5: Distributor
-3. Detailed Sequence Diagrams
-A. Refill Service Loop (Customer <-> Distributor)
-This sequence shows the lifecycle of a service request.
+```
 
+## 3. Detailed Sequence Diagrams
+
+### A. Refill Service Loop (Customer <-> Distributor)
+This sequence shows the lifecycle of a service request.
+```mermaid
 sequenceDiagram
     autonumber
-    actor C as Customer
+
+    participant C as Customer
     participant CA as Customer App
     participant API as Backend API
-    participant DB as MongoDB
+    participant DB as Database
     participant DA as Distributor App
-    actor D as Distributor
+    participant D as Distributor
 
-    box "Initiation"
-    C->>CA: Taps "Order Refill"
-    CA->>CA: Checks Current Oil Level
-    CA->>API: POST /tickets (deviceId, issue="Low Oil")
-    API->>DB: Create Ticket (Status: OPEN)
-    API-->>CA: Return Ticket ID
+    rect rgb(235, 245, 255)
+        C->>CA: Tap Order Refill
+        CA->>CA: Check Oil Level
+        CA->>API: Create Refill Ticket
+        API->>DB: Store Ticket (OPEN)
+        API-->>CA: Ticket ID
     end
 
-    box "Notification"
-    DB->>API: Ticket Created Event
-    API->>DA: Send Push Notification ("New Refill Request")
+    rect rgb(240, 255, 240)
+        DB->>API: Ticket Created Event
+        API->>DA: Notify New Refill Request
     end
 
-    box "Resolution"
-    D->>DA: Open Ticket Details
-    D->>DA: Approve/Assign Service
-    D->>DA: Mark as RESOLVED
-    DA->>API: PUT /tickets/:id (status="RESOLVED")
-    API->>DB: Update Status & LastRefillDate
+    rect rgb(255, 245, 230)
+        D->>DA: Open Ticket
+        D->>DA: Assign Service
+        DA->>API: Update Ticket RESOLVED
+        API->>DB: Update Status and Refill Date
     end
 
-    box "Completion"
-    API->>CA: Send Push Notification ("Service Completed")
-    CA->>C: Update UI (Ticket Closed)
+    rect rgb(235, 255, 235)
+        API->>CA: Service Completed Notification
+        CA->>C: Ticket Closed
     end
-B. Device Pairing & Control (BLE Flow)
+```
+
+
+### B. Device Pairing & Control (BLE Flow)
 How a customer claims and controls a hardware device.
 
+```mermaid
 sequenceDiagram
     actor C as Customer
     participant App
@@ -131,9 +147,12 @@ sequenceDiagram
     BLE->>Dev: Send Bytes [0xAB, ...]
     Dev-->>BLE: ACK
     App->>C: Show Success Toast
-C. Data Sync Optimization
+```
+
+### C. Data Sync Optimization
 How the app ensures the dashboard is up-to-date without draining battery.
 
+```mermaid
 sequenceDiagram
     participant UI as Dashboard UI
     participant Store as Redux Store
@@ -152,3 +171,4 @@ sequenceDiagram
         UI->>Store: Connect BLE (High Frequency Updates)
         Store->>UI: Live Telemetry (ms latency)
     end
+```
